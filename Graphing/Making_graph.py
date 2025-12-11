@@ -1,5 +1,5 @@
 from manim import *
-
+import numpy as np
 
 class Graph(Scene):
     def construct(self):
