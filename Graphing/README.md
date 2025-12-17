@@ -1,8 +1,8 @@
-# Graphing different equation
+# Graphing different equations
 
-In this folder, I am trying to graph some equation in a plane
+In this folder, I am trying to graph some equations in a plane
 
-to run the main file with is (Making_graph.py) run the following commands
+To run the main file with is (Making_graph.py), run the following commands
 
 ```bash
 # Low quality (480p)
