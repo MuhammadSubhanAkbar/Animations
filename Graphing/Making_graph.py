@@ -30,7 +30,6 @@ class Graph(Scene):
             self.wait()
 
         #Graphing Equations
-
         def graphing_equations():
             def cos_fun(t):
                 return np.cos(t) + 0.5 * np.cos(7 * t) + (1 / 7) * np.cos(14 * t)
@@ -68,7 +67,7 @@ class Graph(Scene):
                 color=GREEN)  # Fixed: quote is actually fine here
 
             for label in [cos_label, sin_label1, sin_label2]:
-                label.scale(0.3)
+                label.scale(0.8)
 
             # Position labels
             cos_label.to_corner(UL)
