@@ -1,34 +1,12 @@
 from manim import *
 import numpy as np
 
-
-class Graph(Scene):
+class testing(Scene):
     def construct(self):
+
         def main():
-            create_plane()
             graphing_equations()
 
-
-        def create_plane():
-            number_plane = NumberPlane(
-                x_range=[-10, 10, 1],
-                y_range=[-10, 10, 1],
-                background_line_style={
-                    "stroke_color": "Teal",
-                    "stroke_width": 1,
-                    "stroke_opacity": 0.6
-                },
-                # Add this to show coordinates automatically
-                axis_config={
-                    "include_numbers": True,  # This adds numbers to axes
-                    "font_size": 20,  # Adjust font size
-                }
-            )
-            self.play(Create(number_plane), run_time=5)
-            self.wait()
-
-
-        #Graphing Equations
         def graphing_equations():
             def cos_fun(t):
                 return np.cos(t) + 0.5 * np.cos(7 * t) + (1 / 7) * np.cos(14 * t)
@@ -38,7 +16,7 @@ class Graph(Scene):
 
             def sin_fun2(t):
                 return np.sin(t) + 0.5 * np.sin(7 * t) + (1 / 7) * np.sin(14 * t) + np.cos(t) + 0.5 * np.cos(7 * t) + (
-                            1 / 7) * np.cos(14 * t)  # Fixed: added )
+                            1 / 7) * np.cos(14 * t)  # Fixed: added
 
             cos_graph = FunctionGraph(
                 cos_fun,
@@ -80,7 +58,5 @@ class Graph(Scene):
             self.wait(1)
             self.play(Create(sin_graph2), Write(sin_label2))
             self.wait(2)
-
-
 
         main()
