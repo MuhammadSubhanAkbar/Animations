@@ -1,33 +1,61 @@
 from manim import *
 
-class Diagram(Scene):
+def creating_circles(self):
+    circle1 = Circle(
+        radius=2,
+        fill_color=WHITE,
+        fill_opacity=1,
+        stroke_color=WHITE
+    )
+
+    circle2 = circle1.copy()
+
+    # Draw circles first - ADD WAIT
+    self.play(
+        DrawBorderThenFill(circle1),
+        DrawBorderThenFill(circle2),
+        run_time=1.5
+    )
+    self.wait(0.5)  # ADDED: Pause to see circles
+
+    # Scale down and bring closer
+    self.play(
+        circle1.animate.scale(0.2).shift(UR * 2),
+        circle2.animate.scale(0.2).shift(UL * 2),
+        run_time=1.5
+    )
+    self.wait(0.5)  # ADDED: Pause after movement
+
+    # Create labels
+    label1 = MathTex("q_1", font_size=40, color=BLACK)
+    label2 = MathTex("q_2", font_size=40, color=BLACK)
+
+    label1.move_to(circle1.get_center())
+    label2.move_to(circle2.get_center())
+
+    # Then add labels
+    self.play(
+        Write(label1),
+        Write(label2),
+        run_time=1
+    )
+    self.wait(1)  # ADDED: Pause to see labels
+
+    # Create explanation text
+    Explanation = Text(
+        "Two charged particles with charges q₁ and q₂",
+        font_size=36
+    )
+
+    # Add explanation text
+    self.play(
+        Write(Explanation),
+        run_time=1.5
+    )
+    self.wait(2)  # Final pause
+
+
+# Keep the class for standalone use
+class CircleAnimation(Scene):
     def construct(self):
-        def main():
-            creating_circles()
-
-        def creating_circles():
-            circle = Circle(
-                radius= 2,
-                fill_color= WHITE,
-                fill_opacity= 1,
-                stroke_color=WHITE
-            )
-
-            circle2 = Circle(
-                radius= 2,
-                fill_color= WHITE,
-                fill_opacity= 1,
-                stroke_color=WHITE
-            )
-
-
-            self.play(DrawBorderThenFill(circle), DrawBorderThenFill(circle2), run_time=2)
-            self.wait()
-
-            #Changing the 1circle position
-            self.play(circle.animate.scale(0.2), circle2.animate.scale(0.2), run_time= 1)
-            self.play(circle.animate.shift(RIGHT*4), circle2.anm, run_time= 1)
-            self.wait()
-
-
-        main()
+        creating_circles(self)  # Use the function
