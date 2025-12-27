@@ -2,6 +2,9 @@ from manim import *
 
 class Diagram(Scene):
     def construct(self):
+        def main():
+            creating_circles()
+
         def creating_circles():
             circle = Circle(
                 radius= 2,
@@ -12,3 +15,5 @@ class Diagram(Scene):
 
             self.play(DrawBorderThenFill(circle), run_time=2)
             self.wait()
+
+        main()
