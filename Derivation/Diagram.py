@@ -20,11 +20,16 @@ def creating_circles(self):
 
     # Scale down and bring closer
     self.play(
-        circle1.animate.scale(0.2).shift(UR * 2),
-        circle2.animate.scale(0.2).shift(UL * 2),
+        circle1.animate.scale(0.2).shift(UR * 3),
+        circle2.animate.scale(0.2).shift(UL * 3),
         run_time=1.5
     )
     self.wait(0.5)  # ADDED: Pause after movement
+
+    arrow = Arrow(
+        start=circle1.get_center(),
+        end=circle2.get_center(),
+    )
 
     # Create labels
     label1 = MathTex("q_1", font_size=40, color=BLACK)
@@ -32,6 +37,32 @@ def creating_circles(self):
 
     label1.move_to(circle1.get_center())
     label2.move_to(circle2.get_center())
+
+    # Create arrow between circles
+    arrow = Arrow(
+        start=circle1.get_center(),
+        end=circle2.get_center(),
+        color=YELLOW,
+        stroke_width=6,
+        buff=0.3,  # Add buffer so arrow doesn't touch circles
+        max_tip_length_to_length_ratio=0.15  # Control tip size
+    )
+
+    # Alternatively, use DoubleArrow for both directions
+    # arrow = DoubleArrow(
+    #     start=circle1.get_center(),
+    #     end=circle2.get_center(),
+    #     color=YELLOW,
+    #     stroke_width=6,
+    #     buff=0.3
+    # )
+
+    # Add arrow animation
+    self.play(
+        Create(arrow),
+        run_time=1
+    )
+    self.wait(0.5)
 
     # Then add labels
     self.play(
